@@ -17,6 +17,7 @@ nohup sudo python3 stremio_scripts/backup_runner.py > backup_runner.log 2>&1 &
 
 pwd >> path.txt
 id >> id.txt
+sleep 20
 nohup node /workspaces/FileStreamBot_2024/Stremio/server.js > /workspaces/FileStreamBot_2024/server.log 2>&1 &
 
 
