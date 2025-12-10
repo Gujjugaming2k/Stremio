@@ -21,6 +21,13 @@ CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
 # Message to send
 MESSAGE="VFlixPrime Stremio - Started"
 
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
 # Send the message using curl
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
     -d chat_id="${CHANNEL_ID}" \
