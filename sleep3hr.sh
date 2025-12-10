@@ -1,3 +1,4 @@
+#!/bin/bash
 sleep 3h
 sleep 45m
 
