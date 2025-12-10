@@ -30,10 +30,12 @@ nohup node server.js > server.log 2>&1 &
 echo "[+] Done. Server running in background."
 echo "[+] Logs: $TARGET_DIR/server.log"
 
+cd ..
 
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_to_github.py -o stremio_scripts/backup_to_github.py
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_runner.py -o stremio_scripts/backup_runner.py
-nohup sudo python3 stremio_scripts/backup_runner.py > backup_runner.log 2>&1 &
+
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_to_github.py -o backup_to_github.py
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_runner.py -o backup_runner.py
+nohup sudo python3 backup_runner.py > backup_runner.log 2>&1 &
 
 
 # Base64-encoded credentials
