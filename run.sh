@@ -5,45 +5,27 @@ sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 
-sudo chmod 777 *
 
-mkdir -p stremio_scripts
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_to_github.py -o stremio_scripts/backup_to_github.py
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_runner.py -o stremio_scripts/backup_runner.py
+ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/main/Stremio.zip"
+TARGET_DIR="/tmp/Stremio"
+ZIP_FILE="/tmp/Stremio.zip"
 
-nohup sudo python3 stremio_scripts/backup_runner.py > backup_runner.log 2>&1 &
+echo "[+] Creating target directory if not exists..."
+mkdir -p "$TARGET_DIR"
 
-pwd >> path.txt
-id >> id.txt
-sleep 20
+echo "[+] Downloading Stremio.zip..."
+curl -L "$ZIP_URL" -o "$ZIP_FILE"
 
-sudo chmod 777 *
-sudo chmod 777 Stremio/*
-chmod +x Stremio/*
-chmod +x Stremio/server.js
-chmod +x Stremio/server.js
-nohup sudo node Stremio/server.js > server.log 2>&1 &
+echo "[+] Extracting ZIP..."
+unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
 
-# Base64-encoded credentials
-ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
-ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
+cd "$TARGET_DIR"
 
-# Decode at runtime
-BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
-CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+echo "[+] Installing dependencies..."
+npm install --silent || yarn install --silent
 
-# Message to send
-MESSAGE="VFlixPrime Stremio - Started"
+echo "[+] Starting server.js in background..."
+nohup node server.js > server.log 2>&1 &
 
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
-
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+echo "[+] Done. Server running in background."
+echo "[+] Logs: $TARGET_DIR/server.log"
