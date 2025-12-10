@@ -21,8 +21,8 @@ sudo chmod 777 *
 sudo chmod 777 Stremio/*
 chmod +x Stremio/*
 chmod +x Stremio/server.js
-chmod +x /workspaces/FileStreamBot_2024/Stremio/server.js
-nohup sudo node /workspaces/FileStreamBot_2024/Stremio/server.js > /workspaces/FileStreamBot_2024/server.log 2>&1 &
+chmod +x Stremio/server.js
+nohup sudo node Stremio/server.js > server.log 2>&1 &
 
 # Base64-encoded credentials
 ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
