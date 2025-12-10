@@ -7,8 +7,8 @@ sudo /etc/init.d/cloudflared start
 
 
 ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/main/Stremio.zip"
-TARGET_DIR="/tmp/Stremio"
-ZIP_FILE="/tmp/Stremio.zip"
+TARGET_DIR="Stremio"
+ZIP_FILE="Stremio.zip"
 
 echo "[+] Creating target directory if not exists..."
 mkdir -p "$TARGET_DIR"
