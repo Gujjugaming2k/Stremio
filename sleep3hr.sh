@@ -1,5 +1,71 @@
 #!/bin/bash
-sleep 3h
+
+# Base64-encoded credentials
+ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
+ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
+
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+
+# Message to send
+MESSAGE="Restart Script Placed "
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+sleep 1h
+
+
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+
+# Message to send
+MESSAGE="3 hours pending"
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+sleep 1
+
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+
+# Message to send
+MESSAGE="2 hours pending"
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+sleep 1
+
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+
+# Message to send
+MESSAGE="1 hours pending"
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
 sleep 45m
 
 url="https://vflix.fun/github/github_token_date_v_1.php?type=create"
@@ -25,10 +91,6 @@ while true; do
   fi
 done
 
-
-# Base64-encoded credentials
-ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
-ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
 
 # Decode at runtime
 BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
