@@ -67,7 +67,7 @@ curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
 curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
 nohup sudo filebrowser -p 8021 >> filesystem_php_server.txt 2>&1 &
 
-
+sleep 10
 PASSWORD=$(grep "User 'admin' initialized with randomly generated password" filesystem_php_server.txt | awk -F': ' '{print $2}')
 
 # Construct your message
