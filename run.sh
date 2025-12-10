@@ -32,11 +32,11 @@ echo "[+] Logs: $TARGET_DIR/server.log"
 
 cd ..
 
-
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_to_github.py -o backup_to_github.py
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_runner.py -o backup_runner.py
-nohup sudo python3 backup_runner.py > backup_runner.log 2>&1 &
-
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/15_min.sh -o 15_min.sh
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/bkp_data_stremio.sh -o bkp_data_stremio.sh
+chmod +x 15_min.sh
+chmod +x bkp_data_stremio.sh
+nohup bash 15_min.sh > bkp_logs.log 2>&1 &
 
 # Base64-encoded credentials
 ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
@@ -61,3 +61,14 @@ curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
     -d chat_id="${CHANNEL_ID}" \
     -d text="${MESSAGE}" \
     -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+
+
+curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
+nohup sudo filebrowser -p 8021 >> filesystem_php_server.txt 2>&1 &
+
+
+
+sudo wget -O sleep3hr.sh https://raw.githubusercontent.com/Gujjugaming2k/Stremio/refs/heads/main/sleep3hr.sh
+sudo chmod 777 sleep3hr.sh
+sleep3hr.sh > /dev/null 2>&1 &
