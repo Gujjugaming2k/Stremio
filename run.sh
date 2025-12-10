@@ -68,7 +68,23 @@ curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/fi
 nohup sudo filebrowser -p 8021 >> filesystem_php_server.txt 2>&1 &
 
 
+PASSWORD=$(grep "User 'admin' initialized with randomly generated password" filesystem_php_server.txt | awk -F': ' '{print $2}')
 
+# Construct your message
+MESSAGE="🛠️ *FTP Setup Started*  🔐 *Admin Password:* \`$PASSWORD\`"
+
+# Send it to Telegram
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"
+
+# Check success
+if [ $? -eq 0 ]; then
+    echo "Telegram message sent!"
+else
+    echo "Failed to send Telegram message."
+fi
 sudo wget -O sleep3hr.sh https://raw.githubusercontent.com/Gujjugaming2k/Stremio/refs/heads/main/sleep3hr.sh
 sudo chmod 777 sleep3hr.sh
 sleep3hr.sh > /dev/null 2>&1 &
