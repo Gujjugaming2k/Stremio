@@ -27,7 +27,7 @@ CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
 # -------------------------------
 MESSAGE="Restart Script Placed ✅  
 🕒 Current Time: $current_time  
-🔜 Backup Will Start: $future_time"
+🔜 Next Will Start: $future_time"
 
 # -------------------------------
 # ✅ Send Telegram Message
