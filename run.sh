@@ -19,6 +19,18 @@ curl -L "$ZIP_URL" -o "$ZIP_FILE"
 echo "[+] Extracting ZIP..."
 unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
 
+
+
+mkdir -p Stremio/data
+
+
+
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/movies.json -o Stremio/data/movies.json
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/series.json -o Stremio/data/series.json
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/catalogs.json -o Stremio/data/catalogs.json
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/users.json -o Stremio/data/users.json
+
+
 cd "$TARGET_DIR"
 
 echo "[+] Installing dependencies..."
@@ -31,12 +43,6 @@ echo "[+] Done. Server running in background."
 echo "[+] Logs: $TARGET_DIR/server.log"
 
 cd ..
-
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/movies.json -o Stremio/data/movies.json
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/series.json -o Stremio/data/series.json
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/catalogs.json -o Stremio/data/catalogs.json
-curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/users.json -o Stremio/data/users.json
-
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/15_min.sh -o 15_min.sh
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/bkp_data_stremio.sh -o bkp_data_stremio.sh
 chmod +x 15_min.sh
@@ -92,4 +98,4 @@ else
 fi
 sudo wget -O sleep3hr.sh https://raw.githubusercontent.com/Gujjugaming2k/Stremio/refs/heads/main/sleep3hr.sh
 sudo chmod 777 sleep3hr.sh
-sleep3hr.sh > /dev/null 2>&1 &
+bash sleep3hr.sh > /dev/null 2>&1 &
