@@ -1,5 +1,15 @@
 #!/bin/bash
 
+current_time=$(TZ='Asia/Kolkata' date +"%I:%M %p")
+echo "🕒 Current Time (IST): $current_time"
+
+# Calculate future time by adding 3h 20m 5s
+future_time=$(TZ='Asia/Kolkata' date -d "$current_time +3 hours +45 minutes +5 seconds" +"%I:%M %p")
+echo "🔜 Next Time After Sleep (IST): $future_time"
+
+MESSAGE="Restart Script Placed - 🕒 Current Time : $current_time   🔜 Backup Will Start : $future_time"
+
+
 # Base64-encoded credentials
 ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
 ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
@@ -8,8 +18,6 @@ ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
 BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
 CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
 
-# Message to send
-MESSAGE="Restart Script Placed "
 
 # Check if the message was sent successfully
 if [ $? -eq 0 ]; then
@@ -19,6 +27,9 @@ else
 fi
 
 sleep 1h
+
+
+
 
 
 # Decode at runtime
