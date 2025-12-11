@@ -1,16 +1,20 @@
 #!/bin/bash
 
-current_time=$(TZ='Asia/Kolkata' date +"%I:%M %p")
-echo "🕒 Current Time (IST): $current_time"
+# -------------------------------
+# ✅ Time Calculations (IST)
+# -------------------------------
+now=$(TZ='Asia/Kolkata' date +%s)
+future=$(($now + 3*3600 + 45*60 + 5))
 
-# Calculate future time by adding 3h 20m 5s
-future_time=$(TZ='Asia/Kolkata' date -d "$current_time +3 hours +45 minutes +5 seconds" +"%I:%M %p")
+current_time=$(TZ='Asia/Kolkata' date -d @$now +"%I:%M %p")
+future_time=$(TZ='Asia/Kolkata' date -d @$future +"%I:%M %p")
+
+echo "🕒 Current Time (IST): $current_time"
 echo "🔜 Next Time After Sleep (IST): $future_time"
 
-MESSAGE="Restart Script Placed - 🕒 Current Time : $current_time   🔜 Backup Will Start : $future_time"
-
-
-# Base64-encoded credentials
+# -------------------------------
+# ✅ Base64 Encoded Credentials
+# -------------------------------
 ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
 ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
 
@@ -18,13 +22,31 @@ ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
 BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
 CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
 
+# -------------------------------
+# ✅ Message to Send
+# -------------------------------
+MESSAGE="Restart Script Placed ✅  
+🕒 Current Time: $current_time  
+🔜 Backup Will Start: $future_time"
 
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
+# -------------------------------
+# ✅ Send Telegram Message
+# -------------------------------
+response=$(curl -s -o /dev/null -w "%{http_code}" \
+  -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+  -d chat_id="${CHANNEL_ID}" \
+  -d text="${MESSAGE}" \
+  -d parse_mode="Markdown")
+
+# -------------------------------
+# ✅ Status Check
+# -------------------------------
+if [ "$response" -eq 200 ]; then
+    echo "✅ Message sent successfully"
 else
-    echo "Failed to send message."
+    echo "❌ Failed to send message (HTTP $response)"
 fi
+
 
 sleep 1h
 
