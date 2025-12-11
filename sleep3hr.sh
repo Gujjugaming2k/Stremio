@@ -23,118 +23,96 @@ BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
 CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
 
 # -------------------------------
-# ✅ Message to Send
+# ✅ Send Restart Message
 # -------------------------------
 MESSAGE="Restart Script Placed ✅  
 🕒 Current Time: $current_time  
 🔜 Next Will Start: $future_time"
 
-# -------------------------------
-# ✅ Send Telegram Message
-# -------------------------------
-response=$(curl -s -o /dev/null -w "%{http_code}" \
+curl -s -o /dev/null -w "%{http_code}" \
   -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
   -d chat_id="${CHANNEL_ID}" \
   -d text="${MESSAGE}" \
-  -d parse_mode="Markdown")
+  -d parse_mode="Markdown"
+
+echo "✅ Restart message sent"
 
 # -------------------------------
-# ✅ Status Check
+# ✅ WAIT 3 HOURS 45 MINUTES
 # -------------------------------
-if [ "$response" -eq 200 ]; then
-    echo "✅ Message sent successfully"
-else
-    echo "❌ Failed to send message (HTTP $response)"
-fi
+sleep 3h
+sleep 45m
 
+# -------------------------------
+# ✅ 3 HOURS PENDING
+# -------------------------------
+MESSAGE="3 hours pending"
+curl -s -o /dev/null -w "%{http_code}" \
+  -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+  -d chat_id="${CHANNEL_ID}" \
+  -d text="${MESSAGE}"
+
+echo "✅ Sent: 3 hours pending"
 
 sleep 1h
 
-
-
-
-
-# Decode at runtime
-BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
-CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
-
-# Message to send
-MESSAGE="3 hours pending"
-
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
-
-sleep 1
-
-# Decode at runtime
-BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
-CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
-
-# Message to send
+# -------------------------------
+# ✅ 2 HOURS PENDING
+# -------------------------------
 MESSAGE="2 hours pending"
+curl -s -o /dev/null -w "%{http_code}" \
+  -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+  -d chat_id="${CHANNEL_ID}" \
+  -d text="${MESSAGE}"
 
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
+echo "✅ Sent: 2 hours pending"
 
-sleep 1
+sleep 1h
 
-# Decode at runtime
-BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
-CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
-
-# Message to send
+# -------------------------------
+# ✅ 1 HOUR PENDING
+# -------------------------------
 MESSAGE="1 hours pending"
+curl -s -o /dev/null -w "%{http_code}" \
+  -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+  -d chat_id="${CHANNEL_ID}" \
+  -d text="${MESSAGE}"
 
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
+echo "✅ Sent: 1 hours pending"
+
 sleep 45m
 
+# -------------------------------
+# ✅ LOOP UNTIL API RETURNS 200
+# -------------------------------
 url="https://vflix.fun/github/github_token_date_v_1.php?type=create"
 
 while true; do
-  # Get the output and response code using curl
   response=$(curl -s -w "%{http_code}" "$url")
   output=$(echo "$response" | sed '$ d')
   http_code=$(echo "$response" | tail -n 1)
 
-  # Print the output and response code
   echo "Output:"
   echo "$output"
   echo "HTTP Status Code: $http_code"
 
-  # Check if status is 200
   if [ "$http_code" -eq 200 ]; then
     echo "✅ Success! Exiting loop."
     break
   else
-    echo "⚠️ Request failed (code: $http_code). Retrying in 5 seconds..."
+    echo "⚠️ Request failed (code: $http_code). Retrying in 10 seconds..."
     sleep 10
   fi
 done
 
-
-# Decode at runtime
-BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
-CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
-
-# Message to send
+# -------------------------------
+# ✅ FINAL MESSAGE
+# -------------------------------
 MESSAGE="VFlixPrime Stremio - New Started"
 
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
+curl -s -o /dev/null -w "%{http_code}" \
+  -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+  -d chat_id="${CHANNEL_ID}" \
+  -d text="${MESSAGE}"
+
+echo "✅ Final message sent"
