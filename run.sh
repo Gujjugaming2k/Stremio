@@ -68,6 +68,7 @@ nohup npm start > TV.log 2>&1 &
 echo "[+] Done. Server running in background."
 echo "[+] Logs: $TARGET_DIR/TV.log"
 
+cd ..
 
 
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/15_min.sh -o 15_min.sh
