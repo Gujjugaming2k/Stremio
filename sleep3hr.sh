@@ -40,8 +40,8 @@ echo "✅ Restart message sent"
 # -------------------------------
 # ✅ WAIT 3 HOURS 45 MINUTES
 # -------------------------------
-sleep 3h
-sleep 45m
+sleep 1h
+
 
 # -------------------------------
 # ✅ 3 HOURS PENDING
