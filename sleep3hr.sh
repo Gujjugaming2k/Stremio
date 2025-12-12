@@ -80,7 +80,7 @@ curl -s -o /dev/null -w "%{http_code}" \
 
 echo "✅ Sent: 1 hours pending"
 
-sleep 45m
+sleep 50m
 
 # -------------------------------
 # ✅ LOOP UNTIL API RETURNS 200
