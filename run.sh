@@ -30,6 +30,7 @@ curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/head
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/catalogs.json -o Stremio/data/catalogs.json
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/users.json -o Stremio/data/users.json
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/providers.json -o Stremio/data/providers.json
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/settings.json -o Stremio/data/settings.json
 
 cd "$TARGET_DIR"
 
