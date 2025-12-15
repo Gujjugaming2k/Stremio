@@ -71,6 +71,13 @@ echo "[+] Logs: $TARGET_DIR/TV.log"
 
 cd ..
 
+# fetch script
+sudo git clone https://github.com/Gujjugaming2k/IOSMIRROR_Fetch.git
+cd IOSMIRROR_Fetch
+sudo npm i
+nohup sudo pnpm dev > IOSMIRROR_Fetch.log 2>&1 &
+
+cd ..
 
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/15_min.sh -o 15_min.sh
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/bkp_data_stremio.sh -o bkp_data_stremio.sh
