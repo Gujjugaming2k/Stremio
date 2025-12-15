@@ -71,6 +71,14 @@ echo "[+] Logs: $TARGET_DIR/TV.log"
 
 cd ..
 
+
+git clone https://github.com/Gujjugaming2k/m3u8proxyplayer.git
+cd m3u8proxyplayer
+npm i
+nohup pnpm dev > m3u8proxyplayer.log 2>&1 &
+
+cd ..
+
 # fetch script
 git clone https://github.com/Gujjugaming2k/IOSMIRROR_Fetch.git
 cd IOSMIRROR_Fetch
