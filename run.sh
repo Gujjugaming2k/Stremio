@@ -72,10 +72,10 @@ echo "[+] Logs: $TARGET_DIR/TV.log"
 cd ..
 
 # fetch script
-sudo git clone https://github.com/Gujjugaming2k/IOSMIRROR_Fetch.git
+git clone https://github.com/Gujjugaming2k/IOSMIRROR_Fetch.git
 cd IOSMIRROR_Fetch
-sudo npm i
-nohup sudo pnpm dev > IOSMIRROR_Fetch.log 2>&1 &
+npm i
+nohup pnpm dev > IOSMIRROR_Fetch.log 2>&1 &
 
 cd ..
 
