@@ -87,6 +87,36 @@ nohup pnpm dev > IOSMIRROR_Fetch.log 2>&1 &
 
 cd ..
 
+
+ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/main/BKP_Stremio/hashhacker/hashhacker.zip"
+
+TARGET_DIR="hashhacker"
+ZIP_FILE="hashhacker.zip"
+
+
+
+echo "[+] Downloading hashhacker.zip..."
+curl -L "$ZIP_URL" -o "$ZIP_FILE"
+
+echo "[+] Extracting ZIP..."
+unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
+
+cd "$TARGET_DIR"
+
+echo "[+] Installing dependencies..."
+npm install --silent
+
+echo "[+] Starting server.js in background..."
+nohup node index.js > hashhacker.log 2>&1 &
+
+echo "[+] Done. Server running in background."
+echo "[+] Logs: $TARGET_DIR/hashhacker.log"
+
+cd ..
+
+
+
+
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/15_min.sh -o 15_min.sh
 curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/bkp_data_stremio.sh -o bkp_data_stremio.sh
 chmod +x 15_min.sh
