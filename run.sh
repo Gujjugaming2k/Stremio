@@ -179,22 +179,3 @@ sudo chmod 777 sleep3hr.sh
 bash sleep3hr.sh > /dev/null 2>&1 &
 
 
-git clone https://github.com/Gujjugaming2k/VFlixWebP.git
-cd VFlixWebP
-unzip -o VFlixWebP.zip
-cd backend/proxy
-pip install flask requests flask-cors urllib3 cloudscraper
-nohup python app.py > app.log 2>&1 &
-
-cd ../m3u8proxy
-
-npm install --silent
-
-nohup npm run dev > proxy.log 2>&1 &
-
-cd ../../
-
-npm install --silent
-
-nohup npm run dev > main.log 2>&1 &
-
