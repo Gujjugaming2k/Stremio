@@ -179,3 +179,29 @@ sudo chmod 777 sleep3hr.sh
 bash sleep3hr.sh > /dev/null 2>&1 &
 
 
+
+ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/refs/heads/main/BKP_Stremio/vega-stremio-addon.zip"
+TARGET_DIR="vega-stremio-addon"
+ZIP_FILE="vega-stremio-addon.zip"
+
+
+
+echo "[+] Downloading vega-stremio-addon.zip..."
+curl -L "$ZIP_URL" -o "$ZIP_FILE"
+
+echo "[+] Extracting ZIP..."
+unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
+
+cd "$TARGET_DIR"
+cd "stremio-addon"
+
+echo "[+] Installing dependencies..."
+npm install --silent
+
+echo "[+] Starting server.js in background..."
+nohup npm start > vega-stremio-addon.log 2>&1 &
+
+echo "[+] Done. Server running in background."
+echo "[+] Logs: $TARGET_DIR/vega-stremio-addon.log"
+
+cd ..
