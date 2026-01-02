@@ -193,6 +193,7 @@ echo "[+] Extracting ZIP..."
 unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
 
 cd "$TARGET_DIR"
+cd "vega-stremio-addon"
 cd "stremio-addon"
 
 echo "[+] Installing dependencies..."
@@ -204,4 +205,6 @@ nohup npm start > vega-stremio-addon.log 2>&1 &
 echo "[+] Done. Server running in background."
 echo "[+] Logs: $TARGET_DIR/vega-stremio-addon.log"
 
+cd ..
+cd ..
 cd ..
