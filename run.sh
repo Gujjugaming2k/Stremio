@@ -207,6 +207,33 @@ echo "[+] Logs: $TARGET_DIR/hic.log"
 cd ..
 
 
+#madplay
+ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/refs/heads/main/BKP_Stremio/rogflix.zip"
+TARGET_DIR="rogflix"
+ZIP_FILE="rogflix.zip"
+
+
+
+echo "[+] Downloading rogflix.zip..."
+curl -L "$ZIP_URL" -o "$ZIP_FILE"
+
+echo "[+] Extracting ZIP..."
+unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
+
+cd "$TARGET_DIR"
+
+
+echo "[+] Installing dependencies..."
+npm install --silent
+
+echo "[+] Starting index.js in background..."
+nohup node index.js > rogflix.log 2>&1 &
+
+echo "[+] Done. Server running in background."
+echo "[+] Logs: $TARGET_DIR/rogflix.log"
+
+cd ..
+
 #Vega
 ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/refs/heads/main/BKP_Stremio/vega-stremio-addon.zip"
 TARGET_DIR="vega-stremio-addon"
