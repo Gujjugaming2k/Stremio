@@ -209,6 +209,34 @@ echo "[+] Logs: $TARGET_DIR/rogflix.log"
 
 cd ..
 
+#moviebox
+ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/refs/heads/main/BKP_Stremio/moviebox.zip"
+TARGET_DIR="moviebox"
+ZIP_FILE="moviebox.zip"
+
+
+
+echo "[+] Downloading moviebox.zip..."
+curl -L "$ZIP_URL" -o "$ZIP_FILE"
+
+echo "[+] Extracting ZIP..."
+unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
+
+cd "$TARGET_DIR"
+
+
+echo "[+] Installing dependencies..."
+npm install --silent
+
+echo "[+] Starting index.js in background..."
+nohup node addon.js > moviebox.log 2>&1 &
+
+echo "[+] Done. Server running in background."
+echo "[+] Logs: $TARGET_DIR/moviebox.log"
+
+cd ..
+
+
 #Vega
 ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/refs/heads/main/BKP_Stremio/vega-stremio-addon.zip"
 TARGET_DIR="vega-stremio-addon"
