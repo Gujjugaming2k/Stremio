@@ -311,6 +311,6 @@ cd ..
 git clone https://github.com/Mehulittv/tml.git
 cd tml
 npm i
-nohup npm server.js > tml.log 2>&1 &
+nohup node server.js > tml.log 2>&1 &
 
 cd ..
