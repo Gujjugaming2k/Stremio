@@ -294,3 +294,13 @@ echo "[+] Done. Server running in background."
 echo "[+] Logs: $TARGET_DIR/anime.log"
 
 cd ..
+
+
+
+# hentaistream script
+git clone https://github.com/Gujjugaming2k/hentaistream-addon.git
+cd hentaistream-addon
+npm i
+nohup npm start > hentaistream.log 2>&1 &
+
+cd ..
