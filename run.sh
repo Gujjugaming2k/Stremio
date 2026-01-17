@@ -314,3 +314,28 @@ npm i
 nohup node server.js > tml.log 2>&1 &
 
 cd ..
+
+#madplay
+ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/refs/heads/main/BKP_Stremio/meow.zip"
+TARGET_DIR="meow"
+ZIP_FILE="meow.zip"
+
+
+
+echo "[+] Downloading meow.zip..."
+curl -L "$ZIP_URL" -o "$ZIP_FILE"
+
+echo "[+] Extracting ZIP..."
+unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
+
+
+echo "[+] Installing dependencies..."
+pip install -r requirements.txt
+
+echo "[+] Starting index.js in background..."
+nohup python -m meowtv.addon > meow.log 2>&1 &
+
+echo "[+] Done. Server running in background."
+echo "[+] Logs: $TARGET_DIR/meowtv.log"
+
+cd ..
