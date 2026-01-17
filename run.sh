@@ -328,7 +328,7 @@ curl -L "$ZIP_URL" -o "$ZIP_FILE"
 echo "[+] Extracting ZIP..."
 unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
 
-
+cd "$TARGET_DIR"
 echo "[+] Installing dependencies..."
 pip install -r requirements.txt
 
