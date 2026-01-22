@@ -339,3 +339,31 @@ echo "[+] Done. Server running in background."
 echo "[+] Logs: $TARGET_DIR/meowtv.log"
 
 cd ..
+
+
+#Cine
+ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/refs/heads/main/BKP_Stremio/Cine.zip"
+TARGET_DIR="Cine"
+ZIP_FILE="Cine.zip"
+
+
+
+echo "[+] Downloading Cine.zip..."
+curl -L "$ZIP_URL" -o "$ZIP_FILE"
+
+echo "[+] Extracting ZIP..."
+unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
+
+cd "$TARGET_DIR"
+
+
+echo "[+] Installing dependencies..."
+npm install --silent
+
+echo "[+] Starting index.js in background..."
+nohup node addon.js > Cine.log 2>&1 &
+
+echo "[+] Done. Server running in background."
+echo "[+] Logs: $TARGET_DIR/Cine.log"
+
+cd ..
