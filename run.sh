@@ -367,3 +367,30 @@ echo "[+] Done. Server running in background."
 echo "[+] Logs: $TARGET_DIR/Cine.log"
 
 cd ..
+
+
+git clone https://github.com/sarperavci/CloudflareBypassForScraping.git
+cd CloudflareBypassForScraping
+docker compose pull && docker compose up -d
+
+# Pull and run the latest image
+docker run -p 8000:8000 ghcr.io/sarperavci/cloudflarebypassforscraping:latest
+
+
+
+# Message to send
+MESSAGE="All Script - Started"
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
