@@ -369,14 +369,13 @@ echo "[+] Logs: $TARGET_DIR/Cine.log"
 cd ..
 
 
-git clone https://github.com/sarperavci/CloudflareBypassForScraping.git
-cd CloudflareBypassForScraping
-docker compose pull && docker compose up -d
+git clone https://github.com/weebzone/Telegram-Stremio
+cd Telegram-Stremio
+echo 'QVBJX0lEPSIyMDA1NjMyMyIKQVBJX0hBU0g9IjFjN2FiNTlmZjliNjllZjg5OTEzOWU1OTZkM2ZkNWI1IgpCT1RfVE9LRU49Ijg0ODc0MjU2NTk6QUFFRnRPUXZfV1lUSWlzWHpNMzJVdXZwNXhzSWtrWXpQamciCkhFTFBFUl9CT1RfVE9LRU49Ijc5MDEwNjE0NTc6QUFFOFkwa3hsLUwxd2Fremd6MlhLc2hWdjltWEhyLXVWb1kiCk9XTkVSX0lEPSI3Njc5OTQ3MTMyIgpSRVBMQUNFX01PREU9InRydWUiCkhJREVfQ0FUQUxPRz0iZmFsc2UiClBBUkFMTEVMPSIxIgpQUkVfRkVUQ0g9IjEiCkFVVEhfQ0hBTk5FTD0iLTEwMDMxNDM2MTE2MzkiCkRBVEFCQVNFPSJtb25nb2RiK3NydjovL3RnLXN0cmVtaW8taDJyOjdPNzBpSWZCeEp0NUhlblpOUFpDelJTaEs0c0hsb3lyQGNsdXN0ZXIwLmlsY3U4cWcubW9uZ29kYi5uZXQvP3JldHJ5V3JpdGVzPXRydWUmdz1tYWpvcml0eSZhcHBOYW1lPUNsdXN0ZXIwLG1vbmdvZGIrc3J2Oi8vdGctc3RyZW1pby1oMnI6UERRazFmN0JlT2wzeEU5Qkt5eEU4UUFoZ0JkNW13bnhAY2x1c3RlcjAuc3FvMnN6bi5tb25nb2RiLm5ldC8/cmV0cnlXcml0ZXM9dHJ1ZSZ3PW1ham9yaXR5JmFwcE5hbWU9Q2x1c3RlcjAiClRNREJfQVBJPSJlM2M0N2Y4NmE4Y2VjYjg3MjFmOWNjNDVhMWUxYmE4ZiIKQkFTRV9VUkw9Imh0dHBzOi8vdGVsZWdyYW0udmZsaXguc2hvcC8iClBPUlQ9IjgwMDEiClVQU1RSRUFNX1JFUE89Imh0dHBzOi8vZ2l0aHViLmNvbS93ZWViem9uZS9UZWxlZ3JhbS1TdHJlbWlvIgpVUFNUUkVBTV9CUkFOQ0g9Im1hc3RlciIKQURNSU5fVVNFUk5BTUU9IlZGbGl4IgpBRE1JTl9QQVNTV09SRD0iOUR0SXc4aFBZUndNaXY0OXMmSzltIgpNVUxUSV9UT0tFTjE9IjgwOTAyNTQwNzI6QUFIbXJHeFZfWFluU3Vkams1QVE1VjFUNDRWeEhOczNvTTgiCg==' | base64 -d > config.env
+curl -LsSf https://astral.sh/uv/install.sh | sh
+nohup bash start.sh > TelegramStremio.log 2>&1 &
 
-# Pull and run the latest image
-docker run -p 8000:8000 ghcr.io/sarperavci/cloudflarebypassforscraping:latest
-
-
+cd ..
 
 # Message to send
 MESSAGE="All Script - Started"
@@ -393,4 +392,6 @@ curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
     -d chat_id="${CHANNEL_ID}" \
     -d text="${MESSAGE}" \
     -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+
 
