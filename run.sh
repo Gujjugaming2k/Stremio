@@ -129,7 +129,9 @@ sudo wget -O vidzee.py https://raw.githubusercontent.com/Gujjugaming2k/site_scra
 nohup sudo python3 vidzee.py &
 
 
+
 sudo wget -O streammafia.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/streammafia.py
+pip install flask flask-cors requests cryptography
 nohup sudo python3 streammafia.py > streammafia.log 2>&1 &
 
 
