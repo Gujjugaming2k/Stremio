@@ -128,6 +128,10 @@ sudo pip install flask requests pycryptodome markupsafe
 sudo wget -O vidzee.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/vidzee.py
 nohup sudo python3 vidzee.py &
 
+
+sudo wget -O streammafia.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/streammafia.py
+nohup sudo python3 streammafia.py &
+
 curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
 nohup sudo filebrowser -p 8021 >> filesystem_php_server.txt 2>&1 &
 
