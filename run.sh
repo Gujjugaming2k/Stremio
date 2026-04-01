@@ -135,6 +135,11 @@ pip install flask flask-cors requests cryptography
 nohup sudo python3 streammafia.py > streammafia.log 2>&1 &
 
 
+sudo wget -O cinefy_scraper.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/BKP_Stremio/cinefy_scraper.py
+nohup sudo python3 cinefy_scraper.py > cinefy_scraper.log 2>&1 &
+
+
+
 curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
 nohup sudo filebrowser -p 8021 >> filesystem_php_server.txt 2>&1 &
 
