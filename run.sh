@@ -381,7 +381,14 @@ echo "[+] Logs: $TARGET_DIR/Cine.log"
 cd ..
 
 
+echo "[+] SelfStream..."
+git clone https://github.com/Gujjugaming2k/SelfStream.git
+cd SelfStream
+npm install
+npm run build
+nohup npm start > SelfStream.log 2>&1 &
 
+cd ..
 
 # Message to send
 MESSAGE="All Script - Started"
